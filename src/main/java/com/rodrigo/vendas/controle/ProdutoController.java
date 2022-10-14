@@ -2,6 +2,8 @@ package com.rodrigo.vendas.controle;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -29,13 +31,13 @@ public class ProdutoController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Produto save(@RequestBody Produto produto) {
+    public Produto save(@RequestBody @Valid Produto produto) {
         return produtoRepository.save(produto);
     }
 
     @PutMapping("{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Integer id, @RequestBody Produto produto) {
+    public void update(@PathVariable Integer id, @RequestBody @Valid Produto produto) {
         produtoRepository.findById(id).map( p -> {
             produto.setId(produto.getId());
             produtoRepository.save(produto);
