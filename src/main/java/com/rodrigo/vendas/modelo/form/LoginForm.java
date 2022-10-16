@@ -1,5 +1,7 @@
 package com.rodrigo.vendas.modelo.form;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import lombok.Getter;
@@ -9,8 +11,10 @@ import lombok.Setter;
 @Setter
 public class LoginForm {
     
+    @NotBlank
     private String email;
 
+    @NotBlank
     private String senha;
 
     public UsernamePasswordAuthenticationToken converter() {
