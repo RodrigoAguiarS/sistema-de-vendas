@@ -20,7 +20,7 @@ import com.rodrigo.vendas.repositorio.UsuarioRepository;
 public class SecurityConfiguration {
 
     @Autowired
-    private TokenService2 tokenService;
+    private TokenService tokenService;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -40,7 +40,8 @@ public class SecurityConfiguration {
         http.authorizeRequests()
         .antMatchers(HttpMethod.GET, "/api/produtos").permitAll()
         .antMatchers(HttpMethod.GET, "/api/produtos/*").permitAll()
-        .antMatchers(HttpMethod.POST, "/api/auth").permitAll()
+        .antMatchers(HttpMethod.POST, "/api/usuarios/auth").permitAll()
+        .antMatchers(HttpMethod.POST, "/api/usuarios/cadastrar").permitAll()
         .antMatchers(HttpMethod.DELETE, "/api/produtos/*").hasRole("MODERADOR")
         .antMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
         .anyRequest().authenticated()

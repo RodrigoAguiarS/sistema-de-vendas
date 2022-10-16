@@ -15,10 +15,10 @@ import com.rodrigo.vendas.repositorio.UsuarioRepository;
 
 public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
 
-    private TokenService2 tokenService;
+    private TokenService tokenService;
     private UsuarioRepository repository;
 
-    public AutenticacaoViaTokenFilter(TokenService2 tokenService, UsuarioRepository repository) {
+    public AutenticacaoViaTokenFilter(TokenService tokenService, UsuarioRepository repository) {
         this.tokenService = tokenService;
         this.repository = repository;
     }

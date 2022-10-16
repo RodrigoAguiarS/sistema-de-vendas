@@ -13,12 +13,12 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @Service
-public class TokenService2 {
+public class TokenService {
 
-    @Value("${gerenciador.jwt.expiration}")
+    @Value("${vendas.jwt.expiration}")
     private String expiration;
 
-    @Value("${gerenciador.jwt.secret}")
+    @Value("${vendas.jwt.secret}")
     private String secret;
 
     public String gerarToken(Authentication authentication) {
@@ -27,7 +27,7 @@ public class TokenService2 {
         Date dataExpiracao = new Date(hoje.getTime() + Long.parseLong(expiration));
 
         return Jwts.builder()
-                .setIssuer("API de Gerenciador")
+                .setIssuer("API de Vendas")
                 .setSubject(logado.getId().toString())
                 .setIssuedAt(hoje)
                 .setExpiration(dataExpiracao)
