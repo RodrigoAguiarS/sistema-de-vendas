@@ -36,6 +36,8 @@ public class Usuario implements UserDetails {
     @NotBlank
     private String senha;
 
+    private Double saldo = 0.0;
+
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Perfil> perfis = new ArrayList<>();
